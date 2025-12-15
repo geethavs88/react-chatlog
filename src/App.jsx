@@ -20,12 +20,12 @@ const App = () => {
       <main>
 
         {
-          <ChatEntry sender = {message1.sender} body = {message1.body} timeStamp = '2018-05-29T22:49:06+00:00' >
-          </ChatEntry>
+          // <ChatEntry sender = {message1.sender} body = {message1.body} timeStamp = '2018-05-29T22:49:06+00:00' >
+          // </ChatEntry>
         /* Wave 01: Render one ChatEntry component
           messages
           Wave 02: Render ChatLog component */
-          // <ChatLog entries = {messages}>  </ChatLog>
+          <ChatLog entries = {messages}>  </ChatLog>
         }
       </main>
     </div>
