@@ -22,6 +22,7 @@ const ChatLog = ({ entries, toggleLike }) => {
 
   );
 };
+
 ChatLog.propTypes = {
   entries: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -33,6 +34,5 @@ ChatLog.propTypes = {
   toggleLike: PropTypes.func,
 
 };
-
 
 export default ChatLog;

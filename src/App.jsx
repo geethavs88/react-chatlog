@@ -1,6 +1,5 @@
 import './App.css';
 import messages from './data/messages.json';
-
 import ChatLog from './components/ChatLog';
 import { useState } from 'react';
 
@@ -33,17 +32,15 @@ const App = () => {
         <h2>{totalLikes} ❤️s</h2>
       </header>
       <main>
-
         {
           // <ChatEntry sender = {message1.sender} body = {message1.body} timeStamp = '2018-05-29T22:49:06+00:00' >
           // </ChatEntry>
         /* Wave 01: Render one ChatEntry component
-          messages
-          Wave 02: Render ChatLog component */
-          <ChatLog
-            entries = {chatData}
-            toggleLike={handleToggleLike}> </ChatLog>
+          messages*/
         }
+        <ChatLog
+          entries = {chatData}
+          toggleLike={handleToggleLike}> </ChatLog>
       </main>
     </div>
   );
