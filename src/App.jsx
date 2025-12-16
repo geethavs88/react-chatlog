@@ -1,21 +1,18 @@
 import './App.css';
 import messages from './data/messages.json';
-import ChatEntry from './components/ChatEntry';
+
 import ChatLog from './components/ChatLog';
 import { useState } from 'react';
 
-const message1 = {
-  id: 1,
-  sender: 'Vladimir',
-  body: 'why are you arguing with me',
-  timeStamp: '2018-05-29T22:49:06+00:00',
-  liked: false
+const countTotalLikes = (chatData) =>{
+  return chatData.reduce((total, chat) => {
+    return total + (chat.liked ? 1 : 0);
+  }, 0);
 };
-
-
 
 const App = () => {
   const[chatData, setChatData] = useState(messages);
+  const totalLikes = countTotalLikes(chatData);
 
   const handleToggleLike = id =>{
     setChatData(chatData => {
@@ -32,7 +29,8 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
+        <h1>Chat between Vladimir and Estragon</h1>
+        <h2>{totalLikes} ❤️s</h2>
       </header>
       <main>
 
