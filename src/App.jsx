@@ -2,6 +2,7 @@ import './App.css';
 import messages from './data/messages.json';
 import ChatEntry from './components/ChatEntry';
 import ChatLog from './components/ChatLog';
+import { useState } from 'react';
 
 const message1 = {
   id: 1,
@@ -11,7 +12,23 @@ const message1 = {
   liked: false
 };
 
+
+
 const App = () => {
+  const[chatData, setChatData] = useState(messages);
+
+  const handleToggleLike = id =>{
+    setChatData(chatData => {
+      return chatData.map(chat => {
+        if(chat.id === id) {
+          return ({ ...chat, liked: !chat.liked});
+        } else {
+          return chat;
+        }
+      });
+    });
+  };
+
   return (
     <div id="App">
       <header>
@@ -25,7 +42,9 @@ const App = () => {
         /* Wave 01: Render one ChatEntry component
           messages
           Wave 02: Render ChatLog component */
-          <ChatLog entries = {messages}>  </ChatLog>
+          <ChatLog
+            entries = {chatData}
+            toggleLike={handleToggleLike}> </ChatLog>
         }
       </main>
     </div>

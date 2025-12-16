@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 
 
 
-const ChatEntry = ({ id, sender, body, timeStamp }) => {
+const ChatEntry = ({ id, sender, body, timeStamp, liked, toggleLike }) => {
+
+  const heartColor = liked ? '❤️' : '🤍';
   return (
     // Replace the outer tag name with a semantic element that fits our use case
     <article className="chat-entry local">
@@ -12,7 +14,7 @@ const ChatEntry = ({ id, sender, body, timeStamp }) => {
       <section className="entry-bubble">
         <p>{body}</p>
         <p className="entry-time"><TimeStamp time = {timeStamp}></TimeStamp></p>
-        <button className="like">🤍</button>
+        <button className="like" onClick={()=>toggleLike(id)}>{heartColor}</button>
       </section>
     </article>
   );
@@ -23,6 +25,8 @@ ChatEntry.propTypes = {
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
+  liked: PropTypes.bool.isRequired,
+  toggleLike: PropTypes.func.isRequired,
 };
 
 export default ChatEntry;
